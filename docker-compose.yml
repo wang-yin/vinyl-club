@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  # PostgreSQL 資料庫
+  postgres:
+    image: postgres:16-alpine
+    container_name: vinyl_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: vinyl_user
+      POSTGRES_PASSWORD: vinyl_password
+      POSTGRES_DB: vinyl_club_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Express 後端服務
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: vinyl_server
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      DATABASE_URL: postgres://vinyl_user:vinyl_password@postgres:5432/vinyl_club_db
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
