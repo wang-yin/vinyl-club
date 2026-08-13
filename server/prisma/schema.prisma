@@ -7,9 +7,37 @@ datasource db {
   url      = env("DATABASE_URL") 
 }
 
+// 使用者模型
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String?
   createdAt DateTime @default(now())
+  updatedAt   DateTime     @updatedAt
+  collections Collection[]
+}
+
+// 黑膠唱片模型
+model Vinyl {
+  id String @id @default(uuid())
+  title String
+  artist String 
+  coverImage String 
+  releaseYear Int 
+  description String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  collections Collection[]
+}
+
+// 使用者收藏
+model Collection {
+  id String @id @default(uuid())
+  userId    String
+  vinylId   String
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vinyl Vinyl @relation(fields: [vinylId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, vinylId])
 }
