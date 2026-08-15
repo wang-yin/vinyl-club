@@ -1,37 +1,46 @@
 import prisma from "../lib/prisma";
 import bcrypt from "bcryptjs";
 
-interface RegisterInput {
-  name: string;
-  password: string;
-  email: string;
-}
-
-export const registerUser = async ({
+// 新增使用者至資料庫
+export const createUser = async ({
   email,
   password,
   name,
-}: RegisterInput) => {
+}: {
+  email: string;
+  password: string;
+  name: string;
+}) => {
   const normalizedEmail = email.trim().toLowerCase();
-  const existingUser = await prisma.user.findUnique({
-    where: { email: normalizedEmail },
-  });
-  if (existingUser) {
-    throw new Error("EMAIL_EXISTS");
-  }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  return prisma.user.create({
+  return await prisma.user.create({
     data: {
       email: normalizedEmail,
-      password: hashedPassword,
-      name: name,
+      password,
+      name,
     },
     select: {
       id: true,
       email: true,
       name: true,
+      createdAt: true,
     },
   });
+};
+
+// 根據 Email 找尋使用者
+export const findUserByEmail = async (email: string) => {
+  const normalizedEmail = email.trim().toLowerCase();
+  return await prisma.user.findUnique({
+    where: { email: normalizedEmail },
+  });
+};
+
+// 比對密碼
+export const verifyPassword = async (
+  plainPassword: string,
+  hashedPassword: string | null,
+): Promise<boolean> => {
+  if (!hashedPassword) return false;
+  return await bcrypt.compare(plainPassword, hashedPassword);
 };

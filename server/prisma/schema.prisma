@@ -9,14 +9,16 @@ datasource db {
 
 // 使用者模型
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
+  id          String   @id @default(uuid())
+  email       String   @unique
+  name        String?
+  password    String?
+  createdAt   DateTime @default(now())
   updatedAt   DateTime     @updatedAt
   collections Collection[]
 }
+
+
 
 // 黑膠唱片模型
 model Vinyl {
