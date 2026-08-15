@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import prisma from "../lib/prisma.js";
+import prisma from "../lib/prisma";
 
 // 取得所有唱片清單
 export const getVinyls = async (req: Request, res: Response) => {

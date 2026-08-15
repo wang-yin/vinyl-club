@@ -3,7 +3,7 @@ import {
   getVinyls,
   getVinylById,
   createVinyl,
-} from "../controllers/vinyl.controller.js";
+} from "../controllers/vinyl.controller";
 
 const router = Router();
 

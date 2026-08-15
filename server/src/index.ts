@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import prisma from "./lib/prisma.js";
-import vinylRoutes from "./routes/vinyl.routes.js";
+import prisma from "./lib/prisma";
+import vinylRoutes from "./routes/vinyl.routes";
+import authRoutes from "./routes/auth.routes";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/vinyls", vinylRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/api/health", async (req, res) => {
   try {
