@@ -9,3 +9,9 @@ export interface LoginInput {
   password?: string;
   rememberMe: boolean;
 }
+
+export interface CreateUserInput {
+  email: string;
+  password?: string;
+  name: string;
+}

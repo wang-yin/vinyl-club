@@ -1,29 +1,20 @@
 import prisma from "../lib/prisma";
 import bcrypt from "bcryptjs";
+import { CreateUserInput } from "../types/auth";
 
 // 新增使用者至資料庫
 export const createUser = async ({
   email,
   password,
   name,
-}: {
-  email: string;
-  password: string;
-  name: string;
-}) => {
+}: CreateUserInput) => {
   const normalizedEmail = email.trim().toLowerCase();
 
   return await prisma.user.create({
     data: {
       email: normalizedEmail,
-      password,
+      ...(password && { password }),
       name,
-    },
-    select: {
-      id: true,
-      email: true,
-      name: true,
-      createdAt: true,
     },
   });
 };

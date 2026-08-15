@@ -64,9 +64,11 @@ export const login = async (req: Request, res: Response) => {
     return res
       .cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         maxAge,
+        path: "/",
+        partitioned: true,
       })
       .status(200)
       .json({ success: true, data: { user } });
@@ -82,5 +84,22 @@ export const login = async (req: Request, res: Response) => {
       success: false,
       message: "系統內部錯誤，請稍後再試",
     });
+  }
+};
+
+export const logout = async (req: Request, res: Response) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+      partitioned: true,
+    });
+
+    res.status(200).json({ message: "登出成功！" });
+  } catch (error: any) {
+    console.error("登出出錯了：", error);
+    res.status(500).json({ message: "伺服器錯誤，請稍後再試" });
   }
 };
