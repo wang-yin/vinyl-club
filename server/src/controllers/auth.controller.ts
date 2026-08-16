@@ -1,5 +1,9 @@
 import type { Request, Response } from "express";
-import { registerService, loginService } from "../service/auth.service";
+import {
+  registerService,
+  loginService,
+  profileServer,
+} from "../service/auth.service";
 
 // 註冊
 export const register = async (req: Request, res: Response) => {
@@ -87,6 +91,7 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+// 登出
 export const logout = async (req: Request, res: Response) => {
   try {
     res.clearCookie("token", {
@@ -101,5 +106,35 @@ export const logout = async (req: Request, res: Response) => {
   } catch (error: any) {
     console.error("登出出錯了：", error);
     res.status(500).json({ message: "伺服器錯誤，請稍後再試" });
+  }
+};
+
+// 撈取最新的使用者完整資料
+export const profile = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?.userId || (req.user as any)?.id;
+    if (!userId) {
+      return res
+        .status(401)
+        .json({ success: false, message: "無效的使用者身份" });
+    }
+
+    const user = await profileServer(userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "找不到該使用者" });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: { user },
+    });
+  } catch (error: any) {
+    console.error("profile Error:", error?.message);
+    return res.status(500).json({
+      success: false,
+      message: "伺服器內部錯誤",
+    });
   }
 };

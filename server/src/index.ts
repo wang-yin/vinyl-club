@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import prisma from "./lib/prisma";
 import vinylRoutes from "./routes/vinyl.routes";
 import authRoutes from "./routes/auth.routes";
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/vinyls", vinylRoutes);
 app.use("/api/auth", authRoutes);

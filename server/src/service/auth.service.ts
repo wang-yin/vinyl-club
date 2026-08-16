@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import * as authModel from "../models/auth.model";
 import { generateToken } from "../utils/jwt.utils";
-import { RegisterInput, LoginInput } from "../types/auth";
+import { RegisterInput, LoginInput } from "../types/auth.types";
 
 export const registerService = async ({
   email,
@@ -49,4 +49,15 @@ export const loginService = async ({
   const { password: _, ...userWithoutPassword } = user;
 
   return { token, user: userWithoutPassword };
+};
+
+export const profileServer = async (userId: string) => {
+  const user = await authModel.findUserById(userId);
+  if (!user) {
+    return null;
+  }
+
+  const { password: _, ...userWithoutPassword } = user;
+
+  return userWithoutPassword;
 };
