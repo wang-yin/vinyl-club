@@ -39,7 +39,7 @@ export const googleLoginService = async (code: string) => {
     });
   }
 
-  const token = generateToken({ userId: user.id }, true);
+  const token = generateToken({ userId: user.id, role: user.role }, true);
 
   return { token, user };
 };
@@ -98,7 +98,7 @@ export const githubLoginService = async (code: string) => {
     });
   }
 
-  const token = generateToken({ userId: user.id }, true);
+  const token = generateToken({ userId: user.id, role: user.role }, true);
 
   const { password: _, ...userWithoutPassword } = user;
 

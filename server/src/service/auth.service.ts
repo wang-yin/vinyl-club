@@ -44,7 +44,7 @@ export const loginService = async ({
   const isMatch = await authModel.verifyPassword(password, user.password);
   if (!isMatch) throw new Error("INVALID_CREDENTIALS");
 
-  const token = generateToken({ userId: user.id }, rememberMe);
+  const token = generateToken({ userId: user.id, role: user.role }, rememberMe);
 
   const { password: _, ...userWithoutPassword } = user;
 
