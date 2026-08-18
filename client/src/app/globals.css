@@ -3,13 +3,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --noir: #2e2a25;
+  --raven: rgba(12, 11, 10, 0.94);
+  --milk: #f0ece4;
+  --hurricane: #8a8278;
+  --vibrant-amber: #c9922a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-noir: var(--noir);
+  --color-raven: var(--raven);
+  --color-milk: var(--milk);
+  --color-hurricane: var(--hurricane);
+  --color-vibrant-amber: var(--vibrant-amber);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-fraunces: var(--font-fraunces), serif;
 }
 
 @media (prefers-color-scheme: dark) {
