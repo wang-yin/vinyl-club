@@ -1,0 +1,148 @@
+import { Product } from "@/app/types/product";
+
+export const MOCK_PRODUCTS: Product[] = [
+  {
+    id: 1,
+    category: "vinyl",
+    title: "Kind of Blue",
+    artist: "Miles Davis",
+    label: "Columbia Records",
+    year: 1959,
+    price: 45,
+    image:
+      "https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=600&h=600&fit=crop&auto=format",
+    badge: "Classic",
+  },
+  {
+    id: 2,
+    category: "vinyl",
+    title: "The Dark Side of the Moon",
+    artist: "Pink Floyd",
+    label: "Harvest Records",
+    year: 1973,
+    price: 52,
+    image:
+      "https://images.unsplash.com/photo-1645523906730-894addb64d64?w=600&h=600&fit=crop&auto=format",
+    badge: "Reissue",
+  },
+  {
+    id: 3,
+    category: "vinyl",
+    title: "A Love Supreme",
+    artist: "John Coltrane",
+    label: "Impulse! Records",
+    year: 1965,
+    price: 48,
+    image:
+      "https://images.unsplash.com/photo-1766932016632-8b3b198cd8f4?w=600&h=600&fit=crop&auto=format",
+    badge: null,
+  },
+  {
+    id: 4,
+    category: "vinyl",
+    title: "OK Computer",
+    artist: "Radiohead",
+    label: "Parlophone",
+    year: 1997,
+    price: 38,
+    image:
+      "https://images.unsplash.com/photo-1610292810008-04e6651034a5?w=600&h=600&fit=crop&auto=format",
+    badge: null,
+  },
+  {
+    id: 5,
+    category: "vinyl",
+    title: "I Put a Spell on You",
+    artist: "Nina Simone",
+    label: "Philips Records",
+    year: 1965,
+    price: 42,
+    image:
+      "https://images.unsplash.com/photo-1703761141824-c0e25cc887cf?w=600&h=600&fit=crop&auto=format",
+    badge: "Limited",
+  },
+  {
+    id: 6,
+    category: "vinyl",
+    title: "Abbey Road",
+    artist: "The Beatles",
+    label: "Apple Records",
+    year: 1969,
+    price: 55,
+    image:
+      "https://images.unsplash.com/photo-1526394931762-90052e97b376?w=600&h=600&fit=crop&auto=format",
+    badge: "50th Anniv.",
+  },
+  {
+    id: 7,
+    category: "hardware",
+    title: "Debut Carbon EVO",
+    artist: "Pro-Ject",
+    label: "Turntable",
+    year: 2021,
+    price: 499,
+    image:
+      "https://images.unsplash.com/photo-1601148071764-8c3f50e9ab20?w=600&h=600&fit=crop&auto=format",
+    badge: "Bestseller",
+  },
+  {
+    id: 8,
+    category: "hardware",
+    title: "Planar 3",
+    artist: "Rega",
+    label: "Turntable",
+    year: 2023,
+    price: 945,
+    image:
+      "https://images.unsplash.com/photo-1645523906695-d33575166412?w=600&h=600&fit=crop&auto=format",
+    badge: null,
+  },
+  {
+    id: 9,
+    category: "hardware",
+    title: "PM6007",
+    artist: "Marantz",
+    label: "Integrated Amplifier",
+    year: 2022,
+    price: 799,
+    image:
+      "https://images.unsplash.com/photo-1609702847389-b8aec1b0b929?w=600&h=600&fit=crop&auto=format",
+    badge: null,
+  },
+  {
+    id: 10,
+    category: "hardware",
+    title: "AT-LP120XUSB",
+    artist: "Audio-Technica",
+    label: "Turntable",
+    year: 2022,
+    price: 349,
+    image:
+      "https://images.unsplash.com/photo-1608538770329-65941f62f9f8?w=600&h=600&fit=crop&auto=format",
+    badge: "New",
+  },
+  {
+    id: 11,
+    category: "hardware",
+    title: "Debut 2.0 B6.2",
+    artist: "ELAC",
+    label: "Bookshelf Speakers",
+    year: 2022,
+    price: 329,
+    image:
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&h=600&fit=crop&auto=format",
+    badge: null,
+  },
+  {
+    id: 12,
+    category: "hardware",
+    title: "AXR100D",
+    artist: "Cambridge Audio",
+    label: "Stereo Receiver",
+    year: 2023,
+    price: 599,
+    image:
+      "https://images.unsplash.com/photo-1561314105-e6ac04c2984a?w=600&h=600&fit=crop&auto=format",
+    badge: null,
+  },
+];
