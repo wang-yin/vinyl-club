@@ -12,6 +12,7 @@
   --yakitori: #e8a83e;
   --twilight-zone: #1a1714;
   --king-kong: #161311;
+  --whiskey-and-wine: #4a4540;
 }
 
 @theme inline {
@@ -26,6 +27,7 @@
   --color-yakitori: var(--yakitori);
   --color-twilight-zone: var(--twilight-zone);
   --color-king-kong: var(--king-kong);
+  --color-whiskey-and-wine: var(--whiskey-and-wine);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-fraunces: var(--font-fraunces), serif;
