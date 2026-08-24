@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/layout/Nav/Nav";
-import Hero from "@/components/layout/Hero/Hero";
-import ShopSection from "@/components/layout/ShopSection/ShopSection";
-import FeatureStrip from "@/components/layout/FeatureStrip/FeatureStrip";
-import EditorialBanner from "@/components/layout/EditorialBanner/EditorialBanner";
+import Hero from "@/app/sections/Hero/Hero";
+import ShopSection from "@/app/sections/ShopSection/ShopSection";
+import FeatureStrip from "@/app/sections/FeatureStrip/FeatureStrip";
+import EditorialBanner from "@/app/sections/EditorialBanner/EditorialBanner";
 import Footer from "@/components/layout/Footer/Footer";
 
 const geistSans = Geist({
