@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Btn from "./Btn";
+import Btn from "@/components/Button/Btn";
 
 export default function Hero() {
   return (

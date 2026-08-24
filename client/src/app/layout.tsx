@@ -5,6 +5,7 @@ import Nav from "@/components/layout/Nav/Nav";
 import Hero from "@/components/layout/Hero/Hero";
 import ShopSection from "@/components/layout/ShopSection/ShopSection";
 import FeatureStrip from "@/components/layout/FeatureStrip/FeatureStrip";
+import EditorialBanner from "@/components/layout/EditorialBanner/EditorialBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Hero />
         <ShopSection />
         <FeatureStrip />
+        <EditorialBanner />
         {children}
       </body>
     </html>
