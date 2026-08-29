@@ -1,8 +1,10 @@
 import { Product } from "@/app/types/product";
 import Image from "next/image";
 import { fmtPrice } from "@/utils/format";
+import { useCartStore } from "@/app/hooks/useCartStore";
 
 export default function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useCartStore();
   return (
     <div className="group relative flex flex-col transition-colors duration-200 bg-king-kong border border-noir hover:bg-twilight-zone">
       {/* 標籤 */}
@@ -44,7 +46,10 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.artist}
           </p>
         </div>
-        <button className="flex items-center gap-2 mt-3 pt-3 bg-transparent font-sans text-[0.8125rem] font-medium tracking-[0.04em] border-t border-t-noir cursor-pointer text-left transition-colors duration-200 group-hover:text-vibrant-amber text-hurricane">
+        <button
+          className="flex items-center gap-2 mt-3 pt-3 bg-transparent font-sans text-[0.8125rem] font-medium tracking-[0.04em] border-t border-t-noir cursor-pointer text-left transition-colors duration-200 group-hover:text-vibrant-amber text-hurricane"
+          onClick={() => addToCart(product)}
+        >
           <span>+</span>
           Add to Cart
         </button>

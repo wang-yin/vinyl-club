@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces, Noto_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/layout/Nav/Nav";
-import Hero from "@/app/sections/Hero/Hero";
-import ShopSection from "@/app/sections/ShopSection/ShopSection";
-import FeatureStrip from "@/app/sections/FeatureStrip/FeatureStrip";
-import EditorialBanner from "@/app/sections/EditorialBanner/EditorialBanner";
 import Footer from "@/components/layout/Footer/Footer";
+import CartDrawer from "@/components/layout/CartDrawer/CartDrawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,12 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-screen bg-bg text-milk">
         <Nav />
-        <Hero />
-        <ShopSection />
-        <FeatureStrip />
-        <EditorialBanner />
-        <Footer />
         {children}
+        <Footer />
+        <CartDrawer />
       </body>
     </html>
   );
