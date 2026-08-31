@@ -3,6 +3,7 @@
 import NavLink from "./NavLink";
 import { FiShoppingCart } from "react-icons/fi";
 import { useCartStore } from "@/app/hooks/useCartStore";
+import Link from "next/link";
 
 export default function Nav() {
   const totalItems = useCartStore((state) => state.getTotalItems());
@@ -10,14 +11,14 @@ export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 border-b-noir bg-raven backdrop-blur-md">
       <div className="flex justify-between max-w-7xl my-0 mx-auto py-0 px-8 items-center h-16 text-white">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="font-fraunces text-[1.375rem] font-semibold no-underline tracking-tight text-milk"
         >
           GROOVEHAUS
-        </a>
+        </Link>
         <div className="flex gap-8 items-center">
-          {["Shop", "Vinyl", "Hardware", "About"].map((label) => (
+          {["Vinyl", "Hardware", "About"].map((label) => (
             <NavLink key={label} href={`/${label.toLowerCase()}`}>
               {label}
             </NavLink>

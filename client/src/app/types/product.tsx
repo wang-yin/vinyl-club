@@ -5,9 +5,12 @@ export interface Product {
   category: "vinyl" | "hardware";
   title: string;
   artist: string;
+  genre?: string;
+  hwType?: string;
   label: string;
   year: number;
   price: number;
   image: string;
+  description: string;
   badge: string | null;
 }

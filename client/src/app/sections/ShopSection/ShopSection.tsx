@@ -4,6 +4,8 @@ import { useState } from "react";
 import { MOCK_PRODUCTS } from "@/mocks/products";
 import ProductCard from "./ProductCard";
 import { Category } from "@/app/types/product";
+import GoldLink from "@/components/Button/GoldLink";
+import OutlineLink from "@/components/Button/OutlineLink";
 
 export default function ShopSection() {
   const [category, setCategory] = useState<Category>("all");
@@ -48,10 +50,14 @@ export default function ShopSection() {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] bg-noir border border-noir">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] bg-noir border border-noir gap-px">
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
+      </div>
+      <div className="flex justify-center gap-4 mt-12">
+        <GoldLink href="/vinyl">Browse All Vinyl</GoldLink>
+        <OutlineLink href="/hardware">Browse Hardware</OutlineLink>
       </div>
     </section>
   );

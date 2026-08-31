@@ -1,19 +1,20 @@
-import type { FooterColProps } from "@/app/types/Footer";
+import type { FooterColumnProps } from "@/app/types/Footer";
+import Link from "next/link";
 
-export default function FooterCol({ title, links }: FooterColProps) {
+export default function FooterCol({ title, links }: FooterColumnProps) {
   return (
     <div>
-      <p className="font-mono text-[0.65rem] tracking-[0.2em] mb-5 uppercase text-vibrant-amber">
+      <p className="font-mono text-[0.65rem] text-vibrant-amber mb-5 tracking-widest uppercase">
         {title}
       </p>
-      {links.map((l) => (
-        <a
-          key={l}
-          href="#"
-          className="block font-sans text-[0.875rem] no-underline mb-2.5 transition-colors duration-200 text-hurricane hover:text-milk"
+      {links.map(({ label, to }) => (
+        <Link
+          key={label}
+          href={to}
+          className=" block font-sans text-[0.875rem] text-hurricane no-underline mb-2.5 transition-colors duration-200 hover:text-milk"
         >
-          {l}
-        </a>
+          {label}
+        </Link>
       ))}
     </div>
   );

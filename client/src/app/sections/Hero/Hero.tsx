@@ -1,5 +1,7 @@
 import Image from "next/image";
-import Btn from "@/components/Button/Btn";
+import Link from "next/link";
+import GoldLink from "@/components/Button/GoldLink";
+import OutlineLink from "@/components/Button/OutlineLink";
 
 export default function Hero() {
   return (
@@ -28,7 +30,8 @@ export default function Hero() {
           refuses to compromise.
         </p>
         <div className="flex gap-4 items-center flex-wrap">
-          <Btn href="#shop">Explore All</Btn>
+          <GoldLink href="/vinyl">Shop the Collection</GoldLink>
+          <OutlineLink href="/hardware">Explore Hardware</OutlineLink>
         </div>
       </div>
       <div className="absolute right-8 bottom-20 z-2 flex items-center gap-20 flex-col">

@@ -1,5 +1,19 @@
 import FooterCol from "./FooterCol";
 
+const shopLinks = [
+  { label: "Vinyl Records", to: "/vinyl" },
+  { label: "Audio Hardware", to: "/hardware" },
+  { label: "New Arrivals", to: "/vinyl" },
+  { label: "Classics", to: "/vinyl" },
+];
+
+const infoLinks = [
+  { label: "About Us", to: "/about" },
+  { label: "Grading Guide", to: "/about" },
+  { label: "Turntable Setup", to: "/about" },
+  { label: "FAQ", to: "/about" },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-noir py-20 pl-8 pr-12">
@@ -14,30 +28,31 @@ export default function Footer() {
               Based in Taipei, shipping worldwide since 2019.
             </p>
           </div>
-          <FooterCol
-            title="Shop"
-            links={[
-              "All Records",
-              "New Arrivals",
-              "Classics",
-              "Hardware",
-              "Accessories",
-            ]}
-          />
-          <FooterCol
-            title="Info"
-            links={[
-              "About Us",
-              "Blog",
-              "Grading Guide",
-              "Turntable Setup",
-              "FAQ",
-            ]}
-          />
-          <FooterCol
-            title="Contact"
-            links={["hello@groovehaus.com", "Instagram", "Facebook", "Discord"]}
-          />
+          <FooterCol title="Shop" links={shopLinks} />
+          <FooterCol title="Info" links={infoLinks} />
+
+          <div>
+            <p className="font-mono text-[0.65rem] text-vibrant-amber mb-5 tracking-widest uppercase">
+              Contact
+            </p>
+            {[
+              {
+                label: "hello@groovehaus.com",
+                href: "mailto:hello@groovehaus.com",
+              },
+              { label: "Instagram", href: "https://instagram.com" },
+              { label: "Facebook", href: "https://facebook.com" },
+              { label: "Discord", href: "https://discord.com" },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="block font-sans text-[0.875rem] text-hurricane no-underline mb-2.5 transition-colors duration-200 hover:text-milk"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
         <div className="border-t border-noir pt-8 flex justify-between items-center flex-wrap gap-4">
           <p className="font-mono text-[0.65rem] tracking-wider text-whiskey-and-wine">

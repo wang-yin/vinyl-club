@@ -1,4 +1,4 @@
-import Btn from "@/components/Button/Btn";
+import GoldLink from "@/components/Button/GoldLink";
 import Image from "next/image";
 
 export default function EditorialBanner() {
@@ -17,7 +17,7 @@ export default function EditorialBanner() {
             — GROOVEHAUS EDITORIAL, 2024
           </p>
           <div className="pl-8 mt-10 flex gap-4">
-            <Btn href="#shop">Browse Vinyl</Btn>
+            <GoldLink href="/about">Our Story</GoldLink>
           </div>
         </div>
         <div className="relative aspect-4/5 overflow-hidden bg-king-kong">
