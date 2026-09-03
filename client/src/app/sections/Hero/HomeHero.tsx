@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import GoldLink from "@/components/Button/GoldLink";
 import OutlineLink from "@/components/Button/OutlineLink";
 
-export default function Hero() {
+export default function HomeHero() {
   return (
     <section className="relative min-h-140 h-[calc(100vh-64px)] overflow-hidden flex items-end">
       <Image

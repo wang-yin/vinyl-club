@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MOCK_PRODUCTS } from "@/mocks/products";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../../components/cards/ProductCard";
 import { Category } from "@/app/types/product";
 import GoldLink from "@/components/Button/GoldLink";
 import OutlineLink from "@/components/Button/OutlineLink";

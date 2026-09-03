@@ -11,7 +11,7 @@ export default function FooterCol({ title, links }: FooterColumnProps) {
         <Link
           key={label}
           href={to}
-          className=" block font-sans text-[0.875rem] text-hurricane no-underline mb-2.5 transition-colors duration-200 hover:text-milk"
+          className="block font-sans text-[0.875rem] text-hurricane no-underline mb-2.5 transition-colors duration-200 hover:text-milk"
         >
           {label}
         </Link>
