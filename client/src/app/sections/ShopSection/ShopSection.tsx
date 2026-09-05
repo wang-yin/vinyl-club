@@ -4,8 +4,8 @@ import { useState } from "react";
 import { MOCK_PRODUCTS } from "@/mocks/products";
 import ProductCard from "../../../components/cards/ProductCard";
 import { Category } from "@/app/types/product";
-import GoldLink from "@/components/Button/GoldLink";
-import OutlineLink from "@/components/Button/OutlineLink";
+import GoldLink from "@/components/ui/Button/GoldLink";
+import OutlineLink from "@/components/ui/Button/OutlineLink";
 
 export default function ShopSection() {
   const [category, setCategory] = useState<Category>("all");

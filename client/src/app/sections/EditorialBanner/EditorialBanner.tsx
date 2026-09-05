@@ -1,4 +1,4 @@
-import GoldLink from "@/components/Button/GoldLink";
+import GoldLink from "@/components/ui/Button/GoldLink";
 import Image from "next/image";
 
 export default function EditorialBanner() {
