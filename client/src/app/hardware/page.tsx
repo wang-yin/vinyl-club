@@ -60,7 +60,7 @@ export default function Hardware() {
       <section className="py-16 px-8 max-w-7xl my-0 mx-auto">
         <div className="flex items-center justify-between mb-10 flex-wrap gap-6">
           <div className="flex flex-wrap gap-0">
-            {TYPES.map((t, i) => (
+            {TYPES.map((t) => (
               <button
                 key={t.value}
                 onClick={() => setHwType(t.value)}
