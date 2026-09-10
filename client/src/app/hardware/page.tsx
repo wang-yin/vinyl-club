@@ -95,7 +95,7 @@ export default function Hardware() {
       <section className="border border-noir py-24 px-8">
         <div className="max-w-7xl my-0 mx-auto">
           <p className="font-mono text-[0.7rem] tracking-widest text-vibrant-amber mb-4 uppercase">
-            Don't know where to start?
+            Don&#39;t know where to start?
           </p>
           <h2 className="font-fraunces text-[clamp(1.75rem,3.5vw,3rem)] font-semibold tracking-[-0.03em] mb-12 leading-[1.05]">
             Curated

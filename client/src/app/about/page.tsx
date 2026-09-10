@@ -76,9 +76,9 @@ export default function About() {
             </p>
             <p className="font-sans text-[0.9375rem] text-hurricane leading-[1.8]">
               Five years on, we ship to 38 countries and host a monthly
-              listening session that's become a quiet institution in Taipei's
-              music community. The mission hasn't changed: help more people hear
-              music the way it was recorded.
+              listening session that&#39;s become a quiet institution in
+              Taipei&#39;s music community. The mission hasn&#39;t changed: help
+              more people hear music the way it was recorded.
             </p>
           </div>
           <div className="relative overflow-hidden aspect-4/5 bg-king-kong">
@@ -99,7 +99,7 @@ export default function About() {
           <h2 className="font-fraunces text-[clamp(1.75rem,3.5vw,3rem)] font-semibold tracking-[-0.03em] mb-14 leading-[1.05]">
             Four principles we
             <br />
-            <em className="italic">don't negotiate on.</em>
+            <em className="italic">don&#39;t negotiate on.</em>
           </h2>
           <div className="grid grid-cols-2 gap-px bg-noir">
             {VALUES.map((v) => (
@@ -171,9 +171,9 @@ export default function About() {
               <em className="italic">stay a while.</em>
             </h2>
             <p className="font-sans text-[0.9375rem] text-hurricane leading-[1.8] mb-10">
-              Our listening room seats four. Bring a record you're curious about
-              and we'll spin it on the reference system before you commit.
-              Appointments recommended on weekends.
+              Our listening room seats four. Bring a record you&#39;re curious
+              about and we&#39;ll spin it on the reference system before you
+              commit. Appointments recommended on weekends.
             </p>
             <Link
               href="/vinyl"

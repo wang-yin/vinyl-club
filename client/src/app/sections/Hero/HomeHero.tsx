@@ -1,6 +1,6 @@
 import Image from "next/image";
-import GoldLink from "@/components/ui/Button/GoldLink";
-import OutlineLink from "@/components/ui/Button/OutlineLink";
+import GoldLink from "@/components/ui/buttons/GoldLink";
+import OutlineLink from "@/components/ui/buttons/OutlineLink";
 
 export default function HomeHero() {
   return (
