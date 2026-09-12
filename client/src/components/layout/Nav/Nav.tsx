@@ -3,11 +3,22 @@
 import NavLink from "./NavLink";
 import { FiShoppingCart } from "react-icons/fi";
 import { useCartStore } from "@/app/hooks/useCartStore";
+import { useAuthStore } from "@/app/hooks/useAuthStore";
+import Spinner from "@/components/common/Spinner";
+import { CiLock } from "react-icons/ci";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Nav() {
   const totalItems = useCartStore((state) => state.getTotalItems());
   const openCart = useCartStore((state) => state.openCart);
+
+  const { isLoggedIn, isLoading, checkAuth } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
   return (
     <nav className="sticky top-0 z-50 border-b-noir bg-raven backdrop-blur-md">
       <div className="flex justify-between max-w-7xl my-0 mx-auto py-0 px-8 items-center h-16 text-white">
@@ -24,18 +35,31 @@ export default function Nav() {
             </NavLink>
           ))}
         </div>
-        <button
-          className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer"
-          onClick={openCart}
-        >
-          <FiShoppingCart size={14} />
-          CART
-          {totalItems > 0 && (
-            <span className="absolute -top-1.75 -right-1.75 w-4.5 h-4.5 rounded-full bg-vibrant-amber text-noir text-[0.6rem] font-bold flex items-center justify-center">
-              {totalItems}
-            </span>
-          )}
-        </button>
+
+        {isLoading ? (
+          <Spinner />
+        ) : isLoggedIn ? (
+          <button
+            className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer"
+            onClick={openCart}
+          >
+            <FiShoppingCart size={14} />
+            CART
+            {totalItems > 0 && (
+              <span className="absolute -top-1.75 -right-1.75 w-4.5 h-4.5 rounded-full bg-vibrant-amber text-noir text-[0.6rem] font-bold flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
+        ) : (
+          <Link
+            href="/auth"
+            className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer no-underline"
+          >
+            <CiLock size={15} />
+            SIGN IN
+          </Link>
+        )}
       </div>
     </nav>
   );

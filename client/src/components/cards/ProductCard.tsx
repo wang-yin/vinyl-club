@@ -2,9 +2,21 @@ import { Product } from "@/app/types/product";
 import Image from "next/image";
 import { fmtPrice } from "@/utils/format";
 import { useCartStore } from "@/app/hooks/useCartStore";
+import { useAuthStore } from "@/app/hooks/useAuthStore";
+import { useRouter } from "next/navigation";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCartStore();
+  const { isLoggedIn } = useAuthStore();
+  const router = useRouter();
+
+  const handleAddToCart = () => {
+    if (!isLoggedIn) {
+      router.push("/auth");
+      return;
+    }
+    addToCart(product);
+  };
   return (
     <div className="group relative flex flex-col transition-colors duration-200 bg-king-kong border border-noir hover:bg-twilight-zone">
       {/* 標籤 */}
@@ -46,12 +58,17 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.artist}
           </p>
         </div>
+        {product.description && (
+          <p className="font-sans text-[0.775rem] leading-[1.6] mt-0.5 text-whiskey-and-wine">
+            {product.description}
+          </p>
+        )}
         <button
           className="flex items-center gap-2 mt-3 pt-3 bg-transparent font-sans text-[0.8125rem] font-medium tracking-[0.04em] border-t border-t-noir cursor-pointer text-left transition-colors duration-200 group-hover:text-vibrant-amber text-hurricane"
-          onClick={() => addToCart(product)}
+          onClick={handleAddToCart}
         >
           <span>+</span>
-          Add to Cart
+          {isLoggedIn ? "Add to Cart" : "Sign in to Add"}
         </button>
       </div>
     </div>
