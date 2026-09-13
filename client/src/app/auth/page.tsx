@@ -74,7 +74,11 @@ export default function AuthPage() {
               ? "Sign in to access your cart and order history."
               : "Create a free account to start building your collection."}
           </p>
-          {view === "signin" ? <LoginForm /> : <RegisterForm />}
+          {view === "signin" ? (
+            <LoginForm />
+          ) : (
+            <RegisterForm setView={setView} />
+          )}
           {view === "signin" ? <OAuthButtons /> : ""}
           <p className="font-sans text-[0.8125rem] text-hurricane mt-8 text-center">
             {view === "signin"

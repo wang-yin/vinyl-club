@@ -9,6 +9,7 @@ import {
 export const register = async (req: Request, res: Response) => {
   try {
     const { email, password, name } = req.body;
+    console.log("接收到前端註冊資料:", req.body);
 
     if (!name || !password || !email) {
       return res.status(400).json({

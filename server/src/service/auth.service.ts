@@ -26,6 +26,8 @@ export const registerService = async ({
     name,
   });
 
+  console.log("auth_server:", newUser);
+
   return newUser;
 };
 
