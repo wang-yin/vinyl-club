@@ -17,10 +17,12 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const res = await api.get("/auth/profile", { timeout: 5000 });
 
-      if (res.data?.user) {
+      console.log("Profile API 回傳內容：", res.data);
+
+      if (res.data?.data?.user) {
         set({
           isLoggedIn: true,
-          user: res.data.user,
+          user: res.data.data.user,
           isLoading: false,
         });
       } else {

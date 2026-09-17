@@ -44,14 +44,12 @@ export default function RegisterForm({
     setLoading(true);
     try {
       const response = await api.post("/auth/register", formData);
-      console.log("Response:", response);
       if (response.status >= 200 && response.status < 300) {
         setSuccess(true);
         setView("signin");
         setLoading(false);
       }
     } catch (err: unknown) {
-      console.error("真正的錯誤:", err);
       if (typeof err === "object" && err != null && "response" in err) {
         const errResponse = err as {
           response?: { data?: { message?: string } };
