@@ -1,12 +1,15 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import prisma from "./lib/prisma";
 import vinylRoutes from "./routes/vinyl.routes";
 import authRoutes from "./routes/auth.routes";
-
-dotenv.config();
+import passport from "passport";
+import session from "express-session";
+import "./config/passport";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +31,22 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "your_session_secret_key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // 本地開發 http 設 false，正式上線 https 設 true
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 1 天
+    },
+  }),
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/api/vinyls", vinylRoutes);
 app.use("/api/auth", authRoutes);

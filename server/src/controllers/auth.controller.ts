@@ -113,7 +113,9 @@ export const logout = async (req: Request, res: Response) => {
 // 撈取最新的使用者完整資料
 export const profile = async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.userId || (req.user as any)?.id;
+    const currentUser = req.user as any;
+    const userId = currentUser?.userId || currentUser?.id;
+    console.log("當前 req.user 內容:", currentUser);
     if (!userId) {
       return res
         .status(401)

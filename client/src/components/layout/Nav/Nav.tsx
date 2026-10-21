@@ -6,6 +6,7 @@ import { useCartStore } from "@/app/hooks/useCartStore";
 import { useAuthStore } from "@/app/hooks/useAuthStore";
 import Spinner from "@/components/common/Spinner";
 import { CiLock } from "react-icons/ci";
+import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -39,18 +40,24 @@ export default function Nav() {
         {isLoading ? (
           <Spinner />
         ) : isLoggedIn ? (
-          <button
-            className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer"
-            onClick={openCart}
-          >
-            <FiShoppingCart size={14} />
-            CART
-            {totalItems > 0 && (
-              <span className="absolute -top-1.75 -right-1.75 w-4.5 h-4.5 rounded-full bg-vibrant-amber text-noir text-[0.6rem] font-bold flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </button>
+          <div className="flex gap-10">
+            <button
+              className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer"
+              onClick={openCart}
+            >
+              <FiShoppingCart size={14} />
+              CART
+              {totalItems > 0 && (
+                <span className="absolute -top-1.75 -right-1.75 w-4.5 h-4.5 rounded-full bg-vibrant-amber text-noir text-[0.6rem] font-bold flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+            <button className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer">
+              ACCOUNT
+              <FaUserCircle size={14} />
+            </button>
+          </div>
         ) : (
           <Link
             href="/auth"

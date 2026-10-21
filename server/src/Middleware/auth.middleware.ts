@@ -2,14 +2,18 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { JwtPayload } from "../types/jwt.types";
 
-const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret_for_dev";
+const JWT_SECRET = process.env.JWT_SECRET;
 
-export const authenticateJWT = (
+export const isAuthenticated = (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  // 從 Cookie 中讀取 token
+  // Passport 會提供 req.isAuthenticated() 並且把資料放在 req.user
+  if (req.isAuthenticated && req.isAuthenticated()) {
+    return next();
+  }
+
   const token = req.cookies?.token;
   if (!token) {
     return res.status(401).json({
@@ -19,11 +23,11 @@ export const authenticateJWT = (
   }
 
   try {
-    // 驗證 JWT
-    const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
-
+    const decoded = jwt.verify(
+      token,
+      JWT_SECRET as string,
+    ) as unknown as JwtPayload;
     req.user = decoded;
-
     next();
   } catch (error) {
     return res.status(401).json({

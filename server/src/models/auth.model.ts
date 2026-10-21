@@ -29,6 +29,10 @@ export const findUserByEmail = async (email: string) => {
 
 // 根據 id 找尋使用者
 export const findUserById = async (id: string) => {
+  console.log("正在用這個 ID 查詢使用者:", id);
+  if (!id) {
+    throw new Error("findUserById 收到的 id 是空的 (undefined)"); // 👈 加個防禦性檢查
+  }
   return await prisma.user.findUnique({
     where: { id },
   });
