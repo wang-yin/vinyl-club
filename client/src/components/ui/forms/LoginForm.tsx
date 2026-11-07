@@ -43,6 +43,9 @@ export default function LoginForm() {
       return;
     }
 
+    setLoading(true);
+    setError("");
+
     try {
       const response = await api.post("/auth/login", formData);
       if (response.status >= 200 && response.status < 300) {
@@ -124,6 +127,7 @@ export default function LoginForm() {
           <input
             type="checkbox"
             checked={formData.remember}
+            name="remember"
             onChange={handleChange}
             className="cursor-pointer"
           ></input>

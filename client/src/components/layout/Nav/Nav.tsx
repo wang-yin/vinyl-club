@@ -8,13 +8,16 @@ import Spinner from "@/components/common/Spinner";
 import { CiLock } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import UserDropdown from "@/components/ui/common/UserDropdown";
 
 export default function Nav() {
   const totalItems = useCartStore((state) => state.getTotalItems());
   const openCart = useCartStore((state) => state.openCart);
 
-  const { isLoggedIn, isLoading, checkAuth } = useAuthStore();
+  const { isLoggedIn, isLoading, checkAuth, user } = useAuthStore();
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -53,10 +56,26 @@ export default function Nav() {
                 </span>
               )}
             </button>
-            <button className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer">
-              ACCOUNT
-              <FaUserCircle size={14} />
-            </button>
+            <div className="relative">
+              <button
+                className="relative flex items-center gap-2 py-2 px-4.5 bg-transparent border border-noir text-milk font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:text-vibrant-amber hover:border-vibrant-amber cursor-pointer"
+                onClick={() => setIsDropdownOpen((prev) => !prev)}
+              >
+                {isLoggedIn ? (
+                  <span className="truncate max-w-25">{user?.name}</span>
+                ) : (
+                  "ACCOUNT"
+                )}
+
+                <FaUserCircle size={14} />
+              </button>
+              {isDropdownOpen && (
+                <UserDropdown
+                  user={user}
+                  setIsDropdownOpen={setIsDropdownOpen}
+                />
+              )}
+            </div>
           </div>
         ) : (
           <Link

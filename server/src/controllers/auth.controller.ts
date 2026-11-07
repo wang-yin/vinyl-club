@@ -52,6 +52,7 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password, rememberMe } = req.body;
+    console.log("接收到一般登入請求: ", req.body);
     if (!email || !password) {
       return res
         .status(400)
@@ -95,6 +96,7 @@ export const login = async (req: Request, res: Response) => {
 // 登出
 export const logout = async (req: Request, res: Response) => {
   try {
+    console.log("接收到登出請求");
     res.clearCookie("token", {
       httpOnly: true,
       secure: true,

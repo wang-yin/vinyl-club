@@ -65,6 +65,27 @@ passport.use(
         let email = profile.emails?.[0]?.value;
         const name = profile.displayName || profile.username || "GitHub User";
 
+        // 💡 關鍵修正：如果 profile 裡抓不到 email，透過 GitHub API 主動去抓取使用者的 email 列表
+        if (!email) {
+          try {
+            const response = await fetch("https://api.github.com/user/emails", {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "User-Agent": "Vinyl-Club-App", // GitHub API 強制要求帶 User-Agent
+              },
+            });
+            const emails = await response.json();
+
+            // 找出被設為 primary 且 verified 的 email
+            const primaryEmailObj = emails.find(
+              (item: any) => item.primary && item.verified,
+            );
+            email = primaryEmailObj ? primaryEmailObj.email : emails[0]?.email;
+          } catch (apiError) {
+            console.error("透過 GitHub API 抓取 email 失敗:", apiError);
+          }
+        }
+
         if (!email) {
           return done(new Error("GITHUB_EMAIL_NOT_FOUND"), undefined);
         }

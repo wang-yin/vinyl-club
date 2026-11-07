@@ -1,4 +1,5 @@
 import { GoogleIcon, GithubIcon } from "../icon";
+import api from "@/lib/api";
 
 export default function OAuthButtons() {
   const handleOAuthRedirect = (provider: "google" | "github") => {
